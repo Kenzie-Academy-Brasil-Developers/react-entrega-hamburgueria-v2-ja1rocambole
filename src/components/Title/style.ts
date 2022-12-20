@@ -30,9 +30,6 @@ export const StyledTitle = styled(Title)<IStyledtitle>`
           font-weight: 400;
           font-size: 1rem;
         `;
-
-      default:
-        break;
     }
   }}
 `;
