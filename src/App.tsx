@@ -10,36 +10,12 @@ import { StyledTextField } from "./styles/Input";
 function App() {
   return (
     <div className="container">
-      {/* <h1>first commit</h1>
-      <h2>first commit dev</h2>
-      <Title tag="h5">teste</Title>
-      <StyledTitle tag="h2" color="red" title="one">
-        teste estiloso
-      </StyledTitle>
-      <StyledText tag="span">span stiloso</StyledText>
-      <StyledButton button="default" color="yellow" buttonColor="green">
-        teste botão
-      </StyledButton>
-      <StyledButton button="medium" buttonColor="green">
-        teste botão
-      </StyledButton>
-
-      <TextField
-        variant="outlined"
-        label="só tava testando"
-        sx={{
-          background: "var(--color-gray-0)",
-        }}
-      />
-      <br />
-      <p></p> */}
-      {/* <StyledTextField
-        variant="outlined"
-        label="agora vai"
-        sx={{
-          background: "var(--color-gray-0)",
-        }}
-      /> */}
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel culpa,
+        repudiandae fugit nobis temporibus architecto quas aperiam maxime
+        molestiae, corrupti iure laudantium eaque? Veniam, officiis et!
+        Consequatur magni corrupti distinctio.
+      </p>
 
       <InputSearche />
     </div>
