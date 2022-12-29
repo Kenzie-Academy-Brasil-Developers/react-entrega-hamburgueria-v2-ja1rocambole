@@ -24,7 +24,6 @@ export const BoxLogin = () => {
   });
 
   const submitLogin = (data: any) => {
-    console.log(data);
     login(data);
   };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FormInput } from "../FormInput/inde";
 import { StyledTitle } from "../Title/style";
 import { StyledBoxRegister } from "./style";
@@ -8,8 +8,11 @@ import { StyledButton } from "../../styles/Button";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "./registerSchema";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../providers/UserContext";
 
 export const BoxRegister = () => {
+  const { register } = useContext(UserContext);
+
   const {
     handleSubmit,
     control,
@@ -18,8 +21,14 @@ export const BoxRegister = () => {
     resolver: yupResolver(registerSchema),
   });
 
-  const submitLogin = (data: any) => {
-    console.log(data);
+  const submitRegister = (data: any) => {
+    const dataRegister = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    };
+
+    register(dataRegister);
   };
   return (
     <StyledBoxRegister>
@@ -66,7 +75,7 @@ export const BoxRegister = () => {
         <StyledButton
           button="default"
           buttonColor="white"
-          onClick={handleSubmit(submitLogin)}
+          onClick={handleSubmit(submitRegister)}
         >
           Cadastrar
         </StyledButton>

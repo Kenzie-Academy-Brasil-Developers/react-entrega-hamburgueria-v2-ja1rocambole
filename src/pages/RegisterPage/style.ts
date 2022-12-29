@@ -29,5 +29,8 @@ export const StyledRegisterPage = styled.div`
 
       display: flex;
     }
+    & > div:nth-child(2) {
+      gap: 0;
+    }
   }
 `;

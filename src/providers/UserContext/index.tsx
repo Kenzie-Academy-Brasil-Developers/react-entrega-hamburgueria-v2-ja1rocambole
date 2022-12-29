@@ -1,25 +1,20 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
-
-interface IUserContextProps {
-  children: React.ReactNode;
-}
-
-interface IUserContext {
-  login: (data: IDataLogin) => Promise<void>;
-}
-
-interface IDataLogin {
-  email: string;
-  password: string;
-}
+import {
+  IDataLogin,
+  IDataRegister,
+  IUserContext,
+  IUserContextProps,
+} from "./types";
 
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserContextProps) => {
   const navigate = useNavigate();
+
+  const [globalLoading, setGlobalLoading] = useState(true);
 
   const login = async (data: IDataLogin) => {
     try {
@@ -36,7 +31,23 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     }
   };
 
+  const register = async (data: IDataRegister) => {
+    try {
+      await api.post("/users", data);
+      toast.success("Cadastro feito com sucesso!");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+      toast.error("Ops! Algo deu errado");
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ login }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ login, register }}>
+      {children}
+    </UserContext.Provider>
   );
 };
