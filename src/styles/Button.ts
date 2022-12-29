@@ -26,6 +26,9 @@ export const StyledButton = styled.button<IStyledButton>`
   padding: 0;
   border-radius: 8px;
 
+  font-size: 1rem;
+  font-weight: 600;
+
   ${({ buttonColor }) => {
     switch (buttonColor) {
       case "green":
@@ -41,6 +44,7 @@ export const StyledButton = styled.button<IStyledButton>`
       case "white":
         return css`
           color: var(--color-gray-50);
+          border: var(--color-gray-20);
           background-color: var(--color-gray-20);
 
           &:hover {
