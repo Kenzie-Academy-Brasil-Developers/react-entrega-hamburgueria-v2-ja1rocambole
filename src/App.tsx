@@ -1,10 +1,14 @@
 import React from "react";
 
+import { RoutesMain } from "./routes";
+import GlobalStyle from "./styles/global";
+
 function App() {
   return (
-    <div>
-      <h1>first commit</h1>
-    </div>
+    <>
+      <GlobalStyle />
+      <RoutesMain />
+    </>
   );
 }
 
