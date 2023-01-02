@@ -1,10 +1,17 @@
+import { css } from "@emotion/react";
 import styled from "styled-components";
 
-export const StyledInputSearche = styled.div`
+interface IStyledInputSearche {
+  fullWidth?: string;
+}
+
+export const StyledInputSearche = styled.div<IStyledInputSearche>`
   display: flex;
   align-items: center;
 
   position: relative;
+
+  width: 100%;
 
   input {
     height: 60px;

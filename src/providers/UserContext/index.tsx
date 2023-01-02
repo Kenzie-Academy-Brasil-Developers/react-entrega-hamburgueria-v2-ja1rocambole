@@ -43,23 +43,6 @@ export const UserProvider = ({ children }: IUserContextProps) => {
     }
   };
 
-  useEffect(() => {
-    const userAuthorization = async () => {
-      const token = localStorage.getItem("@TOKEN");
-
-      try {
-        await api.get("/products", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    userAuthorization();
-  }, []);
-
   return (
     <UserContext.Provider value={{ login, register }}>
       {children}

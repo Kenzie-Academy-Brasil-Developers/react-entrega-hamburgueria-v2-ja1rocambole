@@ -1,10 +1,14 @@
 import React from "react";
 import { StyledLogo } from "./style";
 
-export const Logo = () => {
+interface ILogo {
+  className?: string;
+}
+
+export const Logo = ({ className }: ILogo) => {
   return (
-    <StyledLogo>
+    <h1 className={className}>
       Burguer <span>Kenzie</span>
-    </StyledLogo>
+    </h1>
   );
 };

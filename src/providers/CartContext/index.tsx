@@ -1,16 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { ICartContext, ICartContextProps } from "./types";
+import { ICartContext, ICartContextProps, IProduct } from "./types";
 
 export const CartContext = createContext({} as ICartContext);
 
 export const CartProvider = ({ children }: ICartContextProps) => {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [currentSale, setCurrentSale] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0);
+  const [products, setProducts] = useState([] as IProduct[]);
+  const [filteredProducts, setFilteredProducts] = useState([] as IProduct[]);
+  const [currentSale, setCurrentSale] = useState([] as IProduct[]);
 
   const [userAuthorization, setUserAuthorization] = useState(false);
+  const [modalCartVisible, setModalCartVisible] = useState(false);
   const [globalLoading, setGlobalLoading] = useState(true);
 
   useEffect(() => {
@@ -37,12 +37,25 @@ export const CartProvider = ({ children }: ICartContextProps) => {
     getProducts();
   }, []);
 
+  const logOut = () => {
+    localStorage.removeItem("@TOKEN");
+    setUserAuthorization(false);
+  };
+
   return (
     <CartContext.Provider
       value={{
+        products,
+        filteredProducts,
+        setFilteredProducts,
+        currentSale,
+        setCurrentSale,
         userAuthorization,
         setUserAuthorization,
+        modalCartVisible,
+        setModalCartVisible,
         globalLoading,
+        logOut,
       }}
     >
       {children}
